@@ -1,0 +1,11 @@
+The problem with the function is that when the inputs are too large it fails due to below error:
+
+    RuntimeError: maximum recursion depth exceeded while getting the str of an object
+
+This happens because the function does every addition one by one and therefore with large numbers recursion happens way too many times. To solve that issue we need to reduce the amount of recursions.
+One way is to add these lines of code:
+    if num_a < num_b:
+        return multiply(num_b, num_a)
+At any point in the function num_b will be the lower number, so since this is the parameter the function uses to iterate down it will reduce the amount of recursions.
+
+This helps but dosen't completely solve the problem, another possible solution could be to start multiplying numbers instead of only addition.
